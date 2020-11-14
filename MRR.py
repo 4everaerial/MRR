@@ -1,7 +1,10 @@
 import requests
 import json
 import time
+import rigs
 
+
+type = "hashimotos"
 coin = "eth"
 url_ms = f'https://api.minerstat.com/v2/coins?list={coin}'
 url_mmr = f'https://www.miningrigrentals.com/api/v2/info/algos/hashimotos?currency={coin}'
@@ -31,5 +34,8 @@ while (value):
         print("Good time to rent!")
     else:
         print("Bad time to rent!")
+
+    rig_dict = rigs.get_rigs(type)
+    print(rig_dict)
 
     time.sleep(300)
