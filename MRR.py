@@ -1,7 +1,7 @@
 import requests
 import json
 import time
-import rigs
+import rigs, rental
 
 
 
@@ -23,16 +23,19 @@ while (value):
     print("Difference = " + str('%f10' % diff))
 
     profit = diff / float(rig_dict['Price'])
-    print("Potential Profit = " + str(int(profit *100)) + "%" )
+
 
 
     if minerstat_reward > rig_dict['Price']:
         print("Good time to rent!")
-        print(rig_dict)
+        print("Potential Profit = " + str(int(profit * 100)) + "%")
+        rent_id = rig_dict["ID"]
+        rent_price = rig_dict['Price']
+        rental.rent_rig(rent_id, rent_price)
+        print("Rig " + str(rent_id) + "Rented")
+#        time.sleep(36000)
     else:
         print("Bad time to rent!")
-        print(rig_dict)
-
-
+ #       print(rig_dict)
 
     time.sleep(300)
