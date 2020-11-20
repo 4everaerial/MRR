@@ -5,8 +5,8 @@ import hmac_sha1
 def rent_rig(rent_id, price):
         api_base = "https://www.miningrigrentals.com/api/v2/"
         endpoint = "/rental"
-        api_key = 'c05b06652e427370603df49de10a61572aa332c68de392da19d9ff833078124d'
-        api_secret = '8b5c3fdf375b79a5d7a65b2ae404ba7dc490ef70e06246ffd469a5ff104d9594'
+        api_key = '<api key>'
+        api_secret = '<api secret>'
 
         nonce = str(int(time.time()) * 1000)
 
