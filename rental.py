@@ -3,7 +3,7 @@ import requests
 import hmac_sha1
 import config
 
-def rent_rig(rent_id, price):
+def rent_rig(rent_id, price, profile):
         api_base = "https://www.miningrigrentals.com/api/v2/"
         endpoint = "/rental"
         api_key = config.api_keys['key']
@@ -18,7 +18,7 @@ def rent_rig(rent_id, price):
         digest = hmac_sha1.make_digest(sign_string, api_secret)
 
         headers = {'x-api-nonce': nonce, 'x-api-key': api_key, 'x-api-sign': digest}
-        params = {'rig': int(rent_id), 'length': float(3), 'profile': 111671, 'currency': 'ETH', 'rate.price': float(price)}
+        params = {'rig': int(rent_id), 'length': float(3), 'profile': profile, 'currency': 'ETH', 'rate.price': float(price)}
 
         request_url = api_base + endpoint
         r = requests.put(request_url, headers=headers, params=params).json()
