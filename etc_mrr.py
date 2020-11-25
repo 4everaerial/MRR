@@ -30,7 +30,7 @@ def etc_bot():
 
         rental_hash = rental.get_rental_hash()
 
-        if eth_rewards > rig_dict['Price'] * 1.02 and rental_hash < rental_cap:
+        if eth_rewards > rig_dict['Price'] * 1.02 and rental_hash[0] < rental_cap:
             print("Good time to rent ETC!")
             print("Potential Profit = " + str(int(profit * 100)) + "%")
             rent_id = rig_dict["ID"]
@@ -42,7 +42,9 @@ def etc_bot():
             print("Bad time to rent ETC!")
             print("Potential Profit = " + str(int(profit * 100)) + "%")
 
-        print("Rented Hash : " + str(rental_hash))
+#        print("Rented Hash : " + str(rental_hash[0]))
+#        avg_rent_price = rental_hash[1]/rental_hash[0]*8
+#        print("AVG Rental Price : " + str('%f10' % avg_rent_price))
         time.sleep(60)
     except:
         print("Error detected")

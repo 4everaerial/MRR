@@ -25,20 +25,21 @@ def eth_bot():
 
         rental_hash = rental.get_rental_hash()
 
-        if minerstat_reward > rig_dict['Price'] * 1.03 and rental_hash < rental_cap:
+        if minerstat_reward > rig_dict['Price'] * 1.03 and rental_hash[0] < rental_cap:
             print("Good time to rent ETH!")
             print("Potential Profit = " + str(int(profit * 100)) + "%")
             rent_id = rig_dict["ID"]
             rent_price = rig_dict['Price'] + 0.00000001
             rental.rent_rig(rent_id, rent_price, profile)
-            print("Rig " + str(rent_id) + " Rented")
+            print("Rig " + str(rent_id) + " Rented" + "@ price " + str(rent_price))
             time.sleep(240)
         else:
             print("Bad time to rent ETH!")
             print("Potential Profit = " + str(int(profit * 100)) + "%")
-    #       etc_mrr.etc_bot()
-
-        print("Rented Hash : " + str(rental_hash))
+#
+#        print("Rented Hash : " + str(rental_hash[0]))
+#        avg_rent_price = rental_hash[1] / rental_hash[0]*8
+#        print("AVG Rental Price : " + str('%f10' % avg_rent_price))
         time.sleep(60)
     except:
         print("Error detected")
